@@ -1,15 +1,13 @@
 /*
  **Author: Santosh Kumar Dash
  **Author URL: http://santoshdash.epizy.com/
- **Github URL: https://github.com/quintuslabs/dashio-admin
+ **Github URL: https://github.com/quintuslabs/noki-cargo
  */
 
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./StyleSheets/Sidebar.css";
-
-
-
+import 'font-awesome/css/font-awesome.min.css';
 function Sidebar(props) {
   const [active, setActive] = useState("");
   const [dropdownToggle, setDropDownToggle] = useState(false);
@@ -25,13 +23,13 @@ function Sidebar(props) {
       <nav id="sidebar" className={props.toggleClass}>
         <ul className="list-unstyled components">
           <li
-            className={active === "/dashio-admin/dashboard" ? "active" : null}
+            className={active === "/noki-cargo/dashboard" ? "active" : null}
           >
-            <a href="/dashio-admin/dashboard">
+            <a href="/noki-cargo/map">
               <div className="menu-icon">
                 <i className="fa fa-home nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">Dashboard</span>
+              <span className="menu-title">GPS Tracking</span>
             </a>
           </li>
 
@@ -46,7 +44,7 @@ function Sidebar(props) {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i className="menu-icon fa fa-cogs"></i>Components
+              <i className="menu-icon fa fa-cogs"></i>Driver and Device
             </a>
             <ul
               className={
@@ -57,49 +55,49 @@ function Sidebar(props) {
             >
               <li
                 className={
-                  active === "/dashio-admin/components/buttons"
+                  active === "/noki-cargo/components/buttons"
                     ? "active"
                     : null
                 }
               >
-                <a href="/dashio-admin/components/buttons">
+                <a href="/noki-cargo/components/buttons">
                   <div className="menu-icon">
                     <i className="fa fa-puzzle-piece"></i>
                   </div>
-                  <span className="menu-title">Buttons</span>
+                  <span className="menu-title">Add Vehicle & Driver</span>
                 </a>
               </li>
               <li
                 className={
-                  active === "/dashio-admin/components/badge" ? "active" : null
+                  active === "/noki-cargo/components/badge" ? "active" : null
                 }
               >
-                <a href="/dashio-admin/components/badge">
+                <a href="/noki-cargo/components/badge">
                   <div className="menu-icon">
                     <i className="fa fa-id-badge"></i>
                   </div>
-                  <span className="menu-title">Badges</span>
+                  <span className="menu-title">View Vehicle & Driver</span>
                 </a>
               </li>
               <li
                 className={
-                  active === "/dashio-admin/components/card" ? "active" : null
+                  active === "/noki-cargo/components/card" ? "active" : null
                 }
               >
-                <a href="/dashio-admin/components/card">
+                <a href="/noki-cargo/components/card">
                   <div className="menu-icon">
                     <i className="fa fa-id-card-o"></i>
                   </div>
-                  <span className="menu-title">Cards</span>
+                  <span className="menu-title">Office Location</span>
                 </a>
               </li>
 
               <li
                 className={
-                  active === "/dashio-admin/components/alert" ? "active" : null
+                  active === "/noki-cargo/components/alert" ? "active" : null
                 }
               >
-                <a href="/dashio-admin/components/alert">
+                <a href="/noki-cargo/components/alert">
                   <div className="menu-icon">
                     <i className="fa fa-exclamation-triangle"></i>
                   </div>
@@ -108,12 +106,12 @@ function Sidebar(props) {
               </li>
               <li
                 className={
-                  active === "/dashio-admin/components/progressbar"
+                  active === "/noki-cargo/components/progressbar"
                     ? "active"
                     : null
                 }
               >
-                <a href="/dashio-admin/components/progressbar">
+                <a href="/noki-cargo/components/progressbar">
                   <div className="menu-icon">
                     <i className="fa fa-tasks"></i>
                   </div>
@@ -123,27 +121,51 @@ function Sidebar(props) {
 
               <li
                 className={
-                  active === "/dashio-admin/components/loader" ? "active" : null
+                  active === "/noki-cargo/components/loader" ? "active" : null
                 }
               >
-                <a href="/dashio-admin/components/loader">
+                <a href="/noki-cargo/components/loader">
                   <div className="menu-icon">
                     <i className="fa fa-spinner"></i>
                   </div>
                   <span className="menu-title">Loader</span>
                 </a>
               </li>
+
+
             </ul>
           </li>
 
           <li
-            className={active === "/dashio-admin/ui-elements" ? "active" : null}
+            className={active === "/dashboard/map" ? "active" : null}
           >
-            <a href="/dashio-admin/ui-elements">
+            <a href="/dashboard/map">
               <div className="menu-icon">
                 <i className="fa fa-book nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">UI Elements </span>
+              <span className="menu-title">OverSpeeding</span>
+            </a>
+          </li>
+
+
+          <li
+            className={active === "/dashboard/fuel" ? "active" : null}
+          >
+            <a href="/dashboard/map">
+              <div className="menu-icon">
+                <i className="fa fa-book nav_icon" aria-hidden="true"></i>
+              </div>
+              <span className="menu-title">Fuel</span>
+            </a>
+          </li>
+
+
+          <li className={active === "/dashboard/fuel" ? "active" : null}>
+            <a href="/dashboard/map">
+              <div className="menu-icon">
+                <i className="fa fa-book nav_icon" aria-hidden="true"></i>
+              </div>
+              <span className="menu-title">Fuel Refill</span>
             </a>
           </li>
 
@@ -156,47 +178,58 @@ function Sidebar(props) {
             </a>
           </li> */}
 
-          <li className={active === "/dashio-admin/forms" ? "active" : null}>
-            <a href="/dashio-admin/forms">
+          <li className={active === "/noki-cargo/forms" ? "active" : null}>
+            <a href="/noki-cargo/forms">
               <div className="menu-icon">
                 <i
                   className="fa fa-check-square-o nav_icon"
                   aria-hidden="true"
                 ></i>
               </div>
-              <span className="menu-title">Forms</span>
+              <span className="menu-title">Speed</span>
             </a>
           </li>
 
-          <li className={active === "/dashio-admin/tables" ? "active" : null}>
-            <a href="/dashio-admin/tables">
+          <li className={active === "/noki-cargo/tables" ? "active" : null}>
+            <a href="/noki-cargo/tables">
               <div className="menu-icon">
                 <i className="fa fa-table nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">Tables</span>
+              <span className="menu-title">Accident alert</span>
             </a>
           </li>
 
-          <li className={active === "/dashio-admin/pages" ? "active" : null}>
-            <a href="/dashio-admin/pages">
+          <li className={active === "/noki-cargo/pages" ? "active" : null}>
+            <a href="/noki-cargo/pages">
               <div className="menu-icon">
                 <i
                   className="fa fa-file-text-o nav_icon"
                   aria-hidden="true"
                 ></i>
               </div>
-              <span className="menu-title">Pages</span>
+              <span className="menu-title">FuelTheft alert</span>
             </a>
           </li>
 
-          <li className={active === "/dashio-admin/charts" ? "active" : null}>
-            <a href="/dashio-admin/charts">
+          <li className={active === "/noki-cargo/updateprofile" ? "active" : null}>
+            <a href="/noki-cargo/updateprofile">
+              <div className="menu-icon">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              </div>
+              <span className="menu-title">UpdateProfile</span>
+            </a>
+          </li>
+
+          <li className={active === "/noki-cargo/charts" ? "active" : null}>
+            <a href="/noki-cargo/charts">
               <div className="menu-icon">
                 <i className="fa fa-bar-chart nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">Charts</span>
+              <span className="menu-title">Report</span>
             </a>
           </li>
+
+        
         </ul>
 
         {/* <ul className="list-unstyled CTAs">

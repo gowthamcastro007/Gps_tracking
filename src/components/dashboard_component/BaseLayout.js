@@ -1,8 +1,3 @@
-/*
- **Author: Santosh Kumar Dash
- **Author URL: http://santoshdash.epizy.com/
- **Github URL: https://github.com/quintuslabs/dashio-admin
- */
 
 import React, { Component } from "react";
 import "./StyleSheets/BaseLayout.css";
@@ -29,13 +24,13 @@ class BaseLayout extends Component {
       <div>
         <Navbar onToggleClick={() => this.onToggle()} />
         <div className="wrapper">
+
           <div className="sidebar-container">
             <Sidebar toggleClass={this.state.toggleClass} />
           </div>
 
           <div id="content" className={this.state.toggleClass}>
             <div className="layout-Container">{this.props.children}</div>
-
             <div className="container-fluid footer-container">
               <Footer />
             </div>

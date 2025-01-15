@@ -1,12 +1,9 @@
-/*
- **Author: Santosh Kumar Dash
- **Author URL: http://santoshdash.epizy.com/
- **Github URL: https://github.com/quintuslabs/dashio-admin
- */
 
 import React, { Component } from "react";
 import "./StyleSheets/Navbar.css";
 import { Link } from "react-router-dom";
+
+import 'font-awesome/css/font-awesome.min.css';
 
 class Navbar extends Component {
   constructor(props) {
@@ -14,6 +11,8 @@ class Navbar extends Component {
     this.state = {};
   }
 
+
+  
   render() {
     return (
       <div className="header-section" id="sticky">
@@ -21,7 +20,7 @@ class Navbar extends Component {
           <div className="container-fluid">
             <Link to="/dashio-admin/dashboard">
               {" "}
-              <div className="nav-title">Dashio-Admin</div>
+              <div className="nav-title">Noki-Cargo</div>
             </Link>
             <div onClick={() => this.props.onToggleClick()}>
               <i className="fa fa-bars" aria-hidden="true"></i>
@@ -42,13 +41,17 @@ class Navbar extends Component {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              {/* <ul className="nav navbar-nav ml-auto">
-                <li className="nav-item active">
+              <ul className="nav navbar-nav justify-content-end">
+                {/* <li className="nav-item active justify-content-end">
                   <a className="nav-link" href="/about">
                     Page
                   </a>
-                </li>
-                <li className="nav-item">
+                </li> */}
+
+              
+                
+            
+                {/* <li className="nav-item">
                   <a className="nav-link" href="/index">
                     Page
                   </a>
@@ -62,14 +65,19 @@ class Navbar extends Component {
                   <a className="nav-link" href="/component">
                     Page
                   </a>
-                </li>
-              </ul> */}
+                </li> */}
+              </ul>
             </div>
+            <a class="nav-item mr-3 nav-link p-3"  ><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+            <a class="nav-item mr-3 nav-link p-3"  > <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
           </div>
         </nav>
       </div>
     );
   }
+
+
+  
 }
 
 export default Navbar;

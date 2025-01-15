@@ -1,7 +1,7 @@
 /*
  **Author: Santosh Kumar Dash
  **Author URL: http://santoshdash.epizy.com/
- **Github URL: https://github.com/quintuslabs/dashio-admin
+ **Github URL: https://github.com/quintuslabs/noki-cargo
  */
 
 import React, { Component } from "react";
@@ -16,9 +16,9 @@ class Footer extends Component {
       <footer className="site-footer">
         <div className="footer-inner bg-white">
           <div className="row">
-            <div className="col-sm-6">Copyright &copy; 2019 Dashio-Admin</div>
+            <div className="col-sm-6">Copyright &copy; 2025 Noki-Cargo-Admin</div>
             <div className="col-sm-6 text-right">
-              Designed by <a href="https://quintuslabs.com">Quintus Labs</a>
+              Designed by Noki-Cargo-Admin
             </div>
           </div>
         </div>

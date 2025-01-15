@@ -7,8 +7,6 @@ import Map123 from "./map/Map123"
 import BaseLayout from "./dashboard_component/BaseLayout"
 
 
-
-
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
