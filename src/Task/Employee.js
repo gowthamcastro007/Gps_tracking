@@ -20,6 +20,8 @@ function Employee() {
   const [newAge, setNewAge] = useState(0)
   const [newPhoneNumber, setNewPhoneNumber] = useState("")
 
+
+
 const [Employee, setEmployee] = useState([]);
 const  EmployeeCollectionRef = collection(db, "Employee");
 

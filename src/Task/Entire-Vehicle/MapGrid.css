@@ -13,3 +13,9 @@
 .style-height{
     height:100%
 }
+
+
+.btn-responsive {
+    white-space: normal !important;
+    word-wrap: break-word;
+}

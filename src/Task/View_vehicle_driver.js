@@ -1,21 +1,54 @@
 import {db} from '../firebase';
-import { useState, useEffect } from 'react';
-import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
+import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc,query, where } from 'firebase/firestore';
+
+import { useState, useEffect } from 'react';
 import './styles.css';
 import 'font-awesome/css/font-awesome.min.css';
 
+import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup';
+import { Button } from 'primereact/button';
+
 export default function Manage(){
 
-    const [newFirstName, setNewFirstName] = useState("")
-    const [newLastName, setNewLastName] = useState("")
-    const [newAge, setNewAge] = useState(0)
-    const [newPhoneNumber, setNewPhoneNumber] = useState("")
-
-    const [officelatitude, setofficelatitude] = useState()
-    const [officelongitude, setofficelongitude] = useState()
-  
+  const [officelatitude, setofficelatitude] = useState()
+  const [officelongitude, setofficelongitude] = useState()
   const [Employee, setEmployee] = useState([]);
+
+
+
+
+  const acceptvalue = (emp) => {
+  
+    deleteEmployee(emp.id);
+    console.log("acceptvalue is clicked")
+    
+  };
+  
+  const rejectvalue = (emp) => {
+  
+  console.log("rejectvalue is clicked")
+    
+  };
+  
+  
+  const confirm2 = (event) => {
+  
+  
+    confirmPopup({
+      group: 'headless',
+        target: event.currentTarget,
+        message: 'Do you want to delete this record?',
+        icon: 'pi pi-info-circle',
+        defaultFocus: 'reject',
+        acceptClassName: 'p-button-danger',
+    });
+  
+  
+  
+  };
+
+
   const  VehicleCollectionRef = collection(db, "Vehicle&Driver");
 
 
@@ -29,6 +62,10 @@ export default function Manage(){
      const empDoc = doc(db, "Vehicle&Driver", id);
      await deleteDoc(empDoc);
   }
+
+
+
+  
 
 
   function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -59,11 +96,8 @@ useEffect(() => {
   setofficelatitude(officelatitude_local);
   setofficelongitude(officelongitude_local);
 
-
-
-
-
       const getEmployee = async () => {
+      
       const data = await getDocs(VehicleCollectionRef);
       setEmployee(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
@@ -71,7 +105,7 @@ useEffect(() => {
 
      getEmployee();
 
-  }, [VehicleCollectionRef] );
+  },[VehicleCollectionRef]);
 
 
 
@@ -95,14 +129,14 @@ useEffect(() => {
       <div className='list-group-item'>
         
           <h6>Driver Name : {emp.DriverName}</h6>
-          <h6>Vehicle ID : {emp.VehicleID}</h6>
+          <h6>Vehicle ID : {emp.vehicleid}</h6>
           <h6>Vehicle Wheel Count : {emp.Vehicle_Wheel_count}</h6>
           <h6>Driver Phone Number : {emp.Phone_Number_Driver}</h6>
           <h6>Speed : {emp.speed}</h6>
           <h6>latitude : {emp.newlatitude}</h6>
           <h6>longitude:{emp.newlongitude}</h6>
           <h6>Distance from office:{Math.round(getDistanceFromLatLonInKm(emp.newlatitude,emp.newlongitude,officelatitude,officelongitude))} KM</h6>
-          
+          <h6>GPS battery percentage: {emp.devicebatterypercentage}</h6>
             
         </div>
 
@@ -117,32 +151,38 @@ useEffect(() => {
         }}>
           {" "}
           Update the User</button><br /><br />
+
+
+          <ConfirmPopup
+                          group="headless"
+                          content={({message, acceptBtnRef, rejectBtnRef, hide}) => 
+                              <div className="bg-gray-900 text-white border-round p-3">
+                                  <span>{message}</span>
+                                  <div className="flex align-items-center gap-2 mt-3">
+                                      <Button ref={acceptBtnRef} label="Delete" onClick={() => {acceptvalue(emp); hide();}} className="btn btn-danger"></Button>
+                                      <Button ref={rejectBtnRef} label="Cancel" outlined onClick={() => {rejectvalue(emp); hide();}}className="btn btn-success"></Button>
+                                  </div>
+                              </div>
+                          }
+                      />
+                    
+            <Button onClick={(event) => {confirm2(event,emp); }} icon="pi pi-times"  label='Delete' className="btn btn-danger"></Button>
+                  
           
-          <button type="button" class="btn btn-danger" onClick={() => {
-            deleteEmployee(emp.id);
-          }}>
-            Delete User
-          </button>
           <br /><br />
 
           <button type="button" class="btn btn-success" disabled={officelatitude==null} onClick={() => {
             window.open("https://www.google.com/maps/dir/?api=1&origin="+(officelatitude.toString())+","+(officelongitude.toString())+"&destination="+(emp.newlatitude)+","+(emp.newlongitude)+"&travelmode=two-wheeler","_blank")
           }} >
-            Go to Map find Distance
+            Go to Map find Distance Between Office & GPS Device
           </button>
 
-          {officelatitude==null ?(<p>update the location to see the map and directions</p>) :(<p></p>)}
-
-      
+          {officelatitude==null ?(<p style={{color:"red"}}>* update the office location to see the map and directions</p>) :(<p></p>)}
 
         </div>
-         
         </div>
         </ul>
 
-
-
-    
        
       ) ;
     })}

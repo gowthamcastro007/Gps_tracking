@@ -1,20 +1,44 @@
 
 import React, { Component } from "react";
+
+import { Link, useNavigate } from 'react-router-dom'
 import "./StyleSheets/Navbar.css";
-import { Link } from "react-router-dom";
 
 import 'font-awesome/css/font-awesome.min.css';
 
+import { auth } from "../../../../firebase";
+
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
+import UpdateProfile from "../../../UpdateProfile";
+
+function withNavigation(Component) {
+  return props => <Component {...props} navigate={useNavigate()} />;
+}
+
 class Navbar extends Component {
+
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+
+      visible:false, 
+      visible_profile:false
+
+    };
   }
+
+
+
+
+
+  
 
 
   
   render() {
     return (
+      
       <div className="header-section" id="sticky">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
@@ -25,17 +49,7 @@ class Navbar extends Component {
             <div onClick={() => this.props.onToggleClick()}>
               <i className="fa fa-bars" aria-hidden="true"></i>
             </div>
-            {/* <button
-              className="btn btn-dark d-inline-block d-lg-none ml-auto"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i className="fa fa-align-justify"></i>
-            </button> */}
+            
 
             <div
               className="collapse navbar-collapse"
@@ -68,11 +82,44 @@ class Navbar extends Component {
                 </li> */}
               </ul>
             </div>
-            <a class="nav-item mr-3 nav-link p-3"  ><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
-            <a class="nav-item mr-3 nav-link p-3"  > <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            <a class="nav-item mr-3 nav-link p-3" onClick={()=>this.setState({ visible_profile: true })}><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+            <a class="nav-item mr-3 nav-link p-3"  onClick={()=>this.setState({ visible: true })}> <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+
           </div>
         </nav>
+
+
+        <Dialog header="Header" visible={this.state.visible_profile} position="top" style={{ width: '50vw' }} onHide={() => {if (!this.state.visible_profile) return; this.setState({ visible_profile: false }); }} draggable={false} resizable={false}>
+                <UpdateProfile />
+        </Dialog>
+
+  
+
+       
+        <Dialog header="Header" visible={this.state.visible} position="top" style={{ width: '50vw' }} onHide={() => {if (!this.state.visible) return; this.setState({ visible: false }); }} footer={(
+        <div>
+            <Button label="No" icon="pi pi-times" onClick={() =>  this.setState({ visible: false })} autoFocus className="btn btn-success" />
+            <Button label="Yes" icon="pi pi-check" onClick={()=>{this.setState({ visible: false });    
+; auth.signOut().then(function() {
+
+  
+  console.log('Signed Out');
+}, function(error) {
+  console.error('Sign Out Error', error);
+}); }} className="btn btn-danger" />
+        </div>
+    )} draggable={false} resizable={false}>
+                <p className="m-0">
+                    Are you Sure want to Logout Application ?
+                </p>
+        </Dialog>
+
+
+        
       </div>
+
+
+
     );
   }
 
@@ -80,4 +127,4 @@ class Navbar extends Component {
   
 }
 
-export default Navbar;
+export default withNavigation(Navbar);

@@ -1,8 +1,8 @@
 const WorkOrders = [{
-    status: 'Draft',
+    status: 'Gowtham',
     service_date: '6/30/2016',
     service_time: '2:17 PM',
-    title: 'Alarm system false reporting due to possible keypad< water damage',
+    title: 'XYZTZ',
     address1: '6556 Evergreen Boulevard Apt 76',
     address2: 'Royalston, MA 01368',
     pay_type: 'hourly',
@@ -10,10 +10,10 @@ const WorkOrders = [{
     id: '46',
     project: 'Broken CCTV display - replace as per on site contaxt'
 }, {
-    status: 'Draft',
+    status: 'Nicolas',
     service_date: '6/30/2016',
     service_time: '1:47 PM',
-    title: 'POS unit printing multiple copies of send receipts',
+    title: '123456',
     address1: '6368 7th Circle Suite 69',
     address2: 'Jamestown, MI 49427',
     pay_type: 'hourly',
@@ -21,10 +21,10 @@ const WorkOrders = [{
     id: '47',
     project: 'Broken CCTV display - replace as per on site contaxt'
 }, {
-    status: 'Draft',
+    status: 'Driver123',
     service_date: '6/30/2016',
     service_time: '1:17 PM',
-    title: 'Install new POS unit at regional store location',
+    title: 'IXYZTZOP',
     address1: '4816 Meadow Ave Unit 83',
     address2: 'Omaha, NE 68110',
     pay_type: 'hourly',

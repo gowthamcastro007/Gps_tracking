@@ -13,7 +13,9 @@ export default function UpdateProfile() {
   const navigate = useNavigate()
 
   function handleSubmit(e) {
+
     e.preventDefault()
+    
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
     }

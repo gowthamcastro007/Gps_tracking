@@ -1,8 +1,4 @@
-/*
- **Author: Santosh Kumar Dash
- **Author URL: http://santoshdash.epizy.com/
- **Github URL: https://github.com/quintuslabs/noki-cargo
- */
+
 
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -29,7 +25,7 @@ function Sidebar(props) {
               <div className="menu-icon">
                 <i className="fa fa-home nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">GPS Tracking</span>
+              <span className="menu-title" >GPS Tracking</span>
             </a>
           </li>
 
@@ -92,54 +88,42 @@ function Sidebar(props) {
                 </a>
               </li>
 
+
               <li
                 className={
-                  active === "/noki-cargo/components/alert" ? "active" : null
-                }
-              >
-                <a href="/noki-cargo/components/alert">
-                  <div className="menu-icon">
-                    <i className="fa fa-exclamation-triangle"></i>
-                  </div>
-                  <span className="menu-title">Alerts</span>
-                </a>
-              </li>
-              <li
-                className={
-                  active === "/noki-cargo/components/progressbar"
+                  active === "/noki-cargo/components/add-destinator"
                     ? "active"
                     : null
                 }
               >
-                <a href="/noki-cargo/components/progressbar">
+                <a href="/noki-cargo/components/add-destinator">
                   <div className="menu-icon">
                     <i className="fa fa-tasks"></i>
                   </div>
-                  <span className="menu-title">Progress Bars</span>
+                  <span className="menu-title">Add Destinator</span>
                 </a>
               </li>
 
               <li
                 className={
-                  active === "/noki-cargo/components/loader" ? "active" : null
+                  active === "/noki-cargo/components/view-destinator" ? "active" : null
                 }
               >
-                <a href="/noki-cargo/components/loader">
+                <a href="/noki-cargo/components/view-destinator">
                   <div className="menu-icon">
                     <i className="fa fa-spinner"></i>
                   </div>
-                  <span className="menu-title">Loader</span>
+                  <span className="menu-title">View Destinator</span>
                 </a>
               </li>
-
-
+              
             </ul>
           </li>
 
           <li
-            className={active === "/dashboard/map" ? "active" : null}
+            className={active === "/dashboard/overspeed" ? "active" : null}
           >
-            <a href="/dashboard/map">
+            <a href="/dashboard/overspeed">
               <div className="menu-icon">
                 <i className="fa fa-book nav_icon" aria-hidden="true"></i>
               </div>
@@ -148,27 +132,19 @@ function Sidebar(props) {
           </li>
 
 
+
           <li
-            className={active === "/dashboard/fuel" ? "active" : null}
-          >
-            <a href="/dashboard/map">
+            className={active === "/dashboard/entire-vehicle" ? "active" : null}>
+            <a href="/dashboard/entire-vehicle">
               <div className="menu-icon">
                 <i className="fa fa-book nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">Fuel</span>
+              <span className="menu-title">Entire Vehicle</span>
             </a>
           </li>
 
 
-          <li className={active === "/dashboard/fuel" ? "active" : null}>
-            <a href="/dashboard/map">
-              <div className="menu-icon">
-                <i className="fa fa-book nav_icon" aria-hidden="true"></i>
-              </div>
-              <span className="menu-title">Fuel Refill</span>
-            </a>
-          </li>
-
+          
           {/* <li className={active === "/widgets" ? "active" : null}>
             <a href="/widgets">
               <div className="menu-icon">
@@ -178,24 +154,26 @@ function Sidebar(props) {
             </a>
           </li> */}
 
-          <li className={active === "/noki-cargo/forms" ? "active" : null}>
-            <a href="/noki-cargo/forms">
+          <li className={active === "/noki-cargo/fuelcost" ? "active" : null}>
+            <a href="/noki-cargo/fuelcost">
               <div className="menu-icon">
                 <i
                   className="fa fa-check-square-o nav_icon"
                   aria-hidden="true"
                 ></i>
               </div>
-              <span className="menu-title">Speed</span>
+              <span className="menu-title">Cost</span>
             </a>
           </li>
 
-          <li className={active === "/noki-cargo/tables" ? "active" : null}>
-            <a href="/noki-cargo/tables">
+
+         
+          <li className={active === "/noki-cargo/owner-only" ? "active" : null}>
+            <a href="/noki-cargo/owner-only">
               <div className="menu-icon">
                 <i className="fa fa-table nav_icon" aria-hidden="true"></i>
               </div>
-              <span className="menu-title">Accident alert</span>
+              <span className="menu-title">Owner-Only Access</span>
             </a>
           </li>
 
@@ -208,15 +186,6 @@ function Sidebar(props) {
                 ></i>
               </div>
               <span className="menu-title">FuelTheft alert</span>
-            </a>
-          </li>
-
-          <li className={active === "/noki-cargo/updateprofile" ? "active" : null}>
-            <a href="/noki-cargo/updateprofile">
-              <div className="menu-icon">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              </div>
-              <span className="menu-title">UpdateProfile</span>
             </a>
           </li>
 

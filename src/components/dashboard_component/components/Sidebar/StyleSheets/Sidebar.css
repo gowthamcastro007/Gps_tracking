@@ -181,6 +181,7 @@ ul.sub-menu.children.dropdown-menu.show {
     opacity: 1;
     position: static!important;
 }
+
 .navbar .navbar-nav li.menu-item-has-children .sub-menu {
     background: #fff;
     border: none;
@@ -189,18 +190,22 @@ ul.sub-menu.children.dropdown-menu.show {
     overflow-y: hidden;
     padding: 0 0 0 35px;
 }
+
 @media (min-width: 576px){
 .navbar-expand-sm .navbar-nav .dropdown-menu {
     position: absolute;
 }
 }
+
 .navbar-nav .dropdown-menu {
     position: static;
     float: none;
 }
+
 .dropdown-menu.show {
     display: block;
 }
+
 .dropdown-menu {
     border-radius: 0;
     -webkit-transform: none!important;
