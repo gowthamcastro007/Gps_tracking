@@ -126,18 +126,14 @@ const [map, setMap] = useState(new Map());
 
 
     const getEmployee = async () => {
+
         const data = await getDocs(DestinatorCollectionRef);
 
-       
         data.docs.map((doc) => ({ ...doc.data(), id: doc.id })).map(async (emp) => {
 
             const userRef = query(collection(db, "Vehicle&Driver"), where("vehicleid", "==", emp.mappedvehicleid));
             const findUsers = await getDocs(userRef);
            
-
-
-            
-
             hashmap.set(emp.mappedvehicleid+"latitude",((findUsers.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).map((vehicle)=>(vehicle.newlatitude))[0]))
             hashmap.set(emp.mappedvehicleid+"longitude",((findUsers.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).map((vehicle)=>(vehicle.newlongitude))[0]))
             hashmap.set(emp.mappedvehicleid+"driver",((findUsers.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).map((vehicle)=>(vehicle.DriverName))[0]))
@@ -151,6 +147,7 @@ const [map, setMap] = useState(new Map());
             
         
         setEmployee(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        
        };
     
 

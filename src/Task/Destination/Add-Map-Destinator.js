@@ -1,11 +1,10 @@
 import { useState,useEffect } from "react"
 import {db} from "../../firebase";
 import {collection, getDocs, addDoc,query,where} from 'firebase/firestore';
+
 import '../styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import 'bootstrap/dist/css/bootstrap.css';
-
 
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
@@ -14,8 +13,6 @@ const AddMapDestinator=()=> {
 
 
     const [newFirstName, setNewFirstName] = useState("")
-
-    const [newLastName, setNewLastName] = useState("")
 
     const [newPhoneNumber, setNewPhoneNumber] = useState("")
 

@@ -92,14 +92,15 @@ useEffect(() => {
 
       <div>
 
-<div class=" container jumbotron">
+<div class="container jumbotron">
     <h3>Vehicle Trip</h3>
     <h4>Driver name: {setbased_on_vehicleid}</h4>
     <h4>Vehicle ID: {locationdata.vehicleid}</h4>
 </div>
-      { Employee.length>0 ? ( 
-      <div className='manage'>
 
+      { Employee.length>0 ? (
+
+      <div className='manage'>
 
    {Employee.map((emp) => {
     

@@ -1,8 +1,4 @@
-/*
- **Author: Santosh Kumar Dash
- **Author URL: http://santoshdash.epizy.com/
- **Github URL: https://github.com/quintuslabs/noki-cargo
- */
+
 import React, { Component } from "react";
 import { Card, CardBody } from "../../components/Card";
 import Breadcrumb from "../../components/BreadCrumb/Breadcrumb";
@@ -10,11 +6,14 @@ import Breadcrumb from "../../components/BreadCrumb/Breadcrumb";
 import 'font-awesome/css/font-awesome.min.css';
 
 class Widgets extends Component {
+
   constructor(props) {
     super(props);
     this.state = {};
   }
+
   render() {
+
     const path = [
       {
         title: "Dashboard",
@@ -146,6 +145,7 @@ class Widgets extends Component {
         </div>
       </div>
     );
+    
   }
 }
 

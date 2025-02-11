@@ -4,39 +4,56 @@ import { MapContainer, Popup, TileLayer, useMap } from "react-leaflet";
 
 import CustomMarker from "./CustomMarker";
 
-export default function Map123() {
+import {db} from '../../firebase';
+
+import {collection,getDocs,query,where} from 'firebase/firestore';
+
+import {useLocation} from 'react-router-dom';
+
+const Map123=()=> {
+
+   
+
+    const [setbased_on_vehicleid_latitude,based_on_vehicleid_function_latitude]=useState("");
+    const [setbased_on_vehicleid_longitude,based_on_vehicleid_function_longitude]=useState("");
 
 const [userLocation, setUserLocation] = useState(null);
 
 const [mapReady, setMapReady] = useState(false);
 
+
+  const based_on_vehicleid=async (vehicleid)=>{
+
+      const userRef = query(collection(db, "Vehicle&Driver"), where("vehicleid", "==", vehicleid));
+      const findUsers = await getDocs(userRef);
+      based_on_vehicleid_function_latitude(((findUsers.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).map((vehicle)=>(vehicle.newlatitude))[0]))
+      based_on_vehicleid_function_longitude(((findUsers.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).map((vehicle)=>(vehicle.newlongitude))[0]))
+
+    }
+    const location = useLocation();
 useEffect(() => {
 
-// Get the user’s current location
 
-navigator.geolocation.getCurrentPosition(
+return () => {
 
-(position) => {
+    const locationdata = location.state;
+    console.log("location_data")
+    console.log(locationdata)
 
-const { latitude, longitude } = position.coords;
+based_on_vehicleid(locationdata.vehicleid);
 
-setUserLocation([latitude, longitude]);
+setMapReady(true);
 
-setMapReady(true); // Signal that map is ready to render
-
-},
-
-(error) => {
-
-console.error("Error getting user location:", error);
-
-setMapReady(true); // Signal that map is ready to render even if user location is not available
+setUserLocation([setbased_on_vehicleid_latitude, setbased_on_vehicleid_longitude]);
 
 }
 
-);
-
 }, []);
+
+
+
+
+
 
 const UserLocationButton = () => {
 
@@ -137,3 +154,6 @@ url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 );
 
 }
+
+
+export default Map123;

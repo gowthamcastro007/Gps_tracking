@@ -9,6 +9,7 @@ import {db} from '../../../firebase';
 
 import {collection, getDocs } from 'firebase/firestore';
 
+import { Link } from "react-router-dom"
 
 
 class MapGrid extends Component {
@@ -31,22 +32,26 @@ class MapGrid extends Component {
             gridView: false,
         })
     };
+
     handleGrid = () => {
         this.setState({
             listView: false,
             gridView: true,
         })
     };
+
     showModal = () => {
         this.setState({
             modalVisibility: true,
         })
     };
+
     hideModal = () => {
         this.setState({
             modalVisibility: false,
         })
     };
+
     handleSave = (event) => {
         this.setState({
             value: "save",
@@ -99,23 +104,32 @@ class MapGrid extends Component {
   <div class="card-body">
     <h5 class="card-title">VehicleID: {person.vehicleid}</h5>
     <p class="card-text">Driver Name: {person.DriverName}</p>
-    <a href="/noki-cargo/map/vehicle" class="card-link">Access Location</a>
+    <Link to={"/noki-cargo/map/vehicle"}
+state={{vehicleid:person.vehicleid}}>Access Location</Link>
   </div>
         </div>:<div className={btnClass123} >
 
 
 <div class="card"  style={{margin:5}}>
+
     <div class="row">
         <div class="col">
   <img class="card-img-top style-height" src={logo} alt="Card image cap"/>
   </div>
+
   <div class="col">
   <div class="card-body">
+
     <h5 class="card-title">VehicleID: {person.vehicleid}</h5>
     <p class="card-text">Driver Name: {person.DriverName}</p>
-    <a href="/noki-cargo/map/vehicle" class="card-link">Access Location</a>
+
+    <Link to={"/noki-cargo/map/vehicle"}
+state={{vehicleid:person.vehicleid}}>Access Location</Link>
+
     </div>
   </div>
+
+
   </div>
   </div>
         </div>
@@ -133,20 +147,23 @@ class MapGrid extends Component {
                     <div className="row" style={{marginBottom:4}}>
 
                     <div className="col-lg-6 col-md-6 col-sm-12 col-sm-12 align-left grid-space">
-                    <span onClick={this.handleList} id="list" className="btn btn-primary btn-xs">
+                    <Link to={"/noki-cargo/map/allvehicle"}> <span onClick={this.handleList} id="list" className="btn btn-primary btn-xs">
             <i class="fa fa-location-arrow" aria-hidden="true"></i> All Vehicle In Single Map
-            </span>
+            </span></Link></div>
 
-</div>
+
                         <div className="col-lg-6 col-md-6 col-sm-12 col-sm-12 text-right grid-space">
 
-                        <div className="btn-group" >
+            <div className="btn-group" >
+
             <span onClick={this.handleGrid} id="list" className="btn btn-primary btn-xs">
             <i class="fa fa-list" aria-hidden="true"></i> List
             </span>
+
             <span onClick={this.handleList} id="grid" className="btn btn-primary btn-xs">
             <i class="fa fa-th" aria-hidden="true"></i>Grid
             </span>
+
         </div>
                         </div>
                     </div>
@@ -160,6 +177,7 @@ class MapGrid extends Component {
                 </div>
             </div>
         </div>
+
     }
 }
 

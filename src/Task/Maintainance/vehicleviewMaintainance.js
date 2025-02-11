@@ -1,17 +1,16 @@
+
 import {db} from '../../firebase';
 import {collection, getDocs, updateDoc, doc, deleteDoc,query,where} from 'firebase/firestore';
-import { useState, useEffect ,} from 'react';
-import {  useLocation } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
+
 import '../styles.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup';
 import { Button } from 'primereact/button';
-
 import { Dialog } from 'primereact/dialog';
-
 import { format } from 'date-fns';
-
 
 import {Calendar} from 'primereact/calendar';
 

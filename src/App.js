@@ -43,11 +43,14 @@ import AddFuel from "./Task/Fuel/AddFuel"
 import VehicleViewFuel from "./Task/Fuel/vehicleviewFuel"
 import ViewFuel from "./Task/Fuel/ViewFuel"
 import EntireVehicle from "./Task/Entire-Vehicle/Entire-Vehicle"
+import All_vehicle_map from "./components/map/All_vehicle_map"
 
 
 
 
 function App() {
+  
+
   return (
     
       
@@ -108,6 +111,21 @@ function App() {
       
                         {/* <Map123/> */}
                       </BaseLayout>}
+                  
+                />
+
+
+
+<Route
+                  key={2}
+                  path="/noki-cargo/map/allvehicle"
+                  exact={true}
+                  element={<BaseLayout>
+   
+          <All_vehicle_map/>
+      
+                      </BaseLayout>
+                      }
                   
                 />
 
@@ -276,7 +294,6 @@ function App() {
                       </BaseLayout>}
                 />
 
-
 <Route
                   key={4}
                   path="/dashboard/cost"
@@ -303,11 +320,6 @@ function App() {
                     <OwnerOnly/>
                       </BaseLayout>}
                 />
-
-
-
-
-
 
 </Route>
 
